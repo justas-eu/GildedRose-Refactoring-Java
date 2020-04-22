@@ -2,12 +2,13 @@ package com.gildedrose;
 
 class GildedRose {
 
-	private static final String AGED_BRIE = "Aged Brie";
-	private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
-	private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+	public static final String AGED_BRIE = "Aged Brie";
+	public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+	public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
 	Item[] items;
 
+	public GildedRose() {};
 	public GildedRose(Item[] items) {
 		this.items = items;
 	}
@@ -23,7 +24,7 @@ class GildedRose {
 		}
 	}
 
-	private int itemQualityAfterDay(final Item item) {
+	int itemQualityAfterDay(final Item item) {
 
 		int quality = item.quality;
 
@@ -73,7 +74,7 @@ class GildedRose {
 		return quality;
 	}
 
-	private int itemSellInValueAfterDay(final Item item) {
+	int itemSellInValueAfterDay(final Item item) {
 
 	    int sellIn = item.sellIn;
 
@@ -81,5 +82,9 @@ class GildedRose {
             sellIn = sellIn - 1;
 		}
 		return sellIn;
+	}
+
+	public void setItems(final Item[] items) {
+		this.items = items;
 	}
 }

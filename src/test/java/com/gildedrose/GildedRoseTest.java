@@ -14,4 +14,11 @@ class GildedRoseTest {
         assertEquals("foo", app.items[0].name);
     }
 
+    @Test
+    void aged_brie_quality_should_increase() {
+        Item agedBrieItem = new Item(GildedRose.AGED_BRIE, 1, 0);
+        GildedRose app = new GildedRose();
+        assertEquals(1, app.itemQualityAfterDay(agedBrieItem));
+    }
+
 }
