@@ -16,7 +16,7 @@ class GildedRose {
 	public void updateQuality() {
 		for (int i = 0; i < items.length; i++) {
 
-			int newQuality = itemQualityAfterDay(items[i]);
+			int newQuality = QualityCounter.itemQualityAfterDay(items[i]);
 			items[i].quality = newQuality;
 
 			int newSellIn = itemSellInValueAfterDay(items[i]);
@@ -24,55 +24,7 @@ class GildedRose {
 		}
 	}
 
-	int itemQualityAfterDay(final Item item) {
 
-		int quality = item.quality;
-
-		if (!item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES)) {
-			if (quality > 0) {
-				if (!item.name.equals(SULFURAS)) {
-					quality = quality - 1;
-				}
-			}
-		} else {
-			if (quality < 50) {
-				quality = quality + 1;
-
-				if (item.name.equals(BACKSTAGE_PASSES)) {
-					if (item.sellIn < 11) {
-						if (quality < 50) {
-							quality = quality + 1;
-						}
-					}
-
-					if (item.sellIn < 6) {
-						if (quality < 50) {
-							quality = quality + 1;
-						}
-					}
-				}
-			}
-		}
-
-		if (item.sellIn <= 0) {
-			if (!item.name.equals(AGED_BRIE)) {
-				if (!item.name.equals(BACKSTAGE_PASSES)) {
-					if (quality > 0) {
-						if (!item.name.equals(SULFURAS)) {
-							quality = quality - 1;
-						}
-					}
-				} else {
-					quality = quality - quality;
-				}
-			} else {
-				if (quality < 50) {
-					quality = quality + 1;
-				}
-			}
-		}
-		return quality;
-	}
 
 	int itemSellInValueAfterDay(final Item item) {
 
