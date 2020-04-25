@@ -7,4 +7,19 @@ The original repository: https://github.com/emilybache/GildedRose-Refactoring-Ka
 
 Readme moved to original-README.md
 
+Prerequisites
+===========
+- Java 8
+- Maven 3
 
+Install
+===========
+<pre>
+mvn clean install
+</pre>
+
+About
+===========
+
+At the moment there was spent about 4-5 hours on this Kata. The goal to make code more readable and maintainable by refactoring existing solution.
+The project can be imported to your preferred IDE.
