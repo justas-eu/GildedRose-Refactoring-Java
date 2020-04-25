@@ -8,7 +8,53 @@ import static com.gildedrose.GildedRose.SULFURAS;
 
 public class QualityCounter {
 
+	public static int agedBrieAfterDay(final Item agedBrie) {
+
+		int quality = agedBrie.quality;
+
+		if (quality < 50) {
+			quality = quality + 1;
+			if (agedBrie.sellIn <= 0) {
+				quality = quality + 1;
+			}
+		}
+		return quality;
+	}
+
+	public static int backstagePassesAfterDay(final Item backstagePass) {
+
+		int quality = backstagePass.quality;
+
+		if (quality < 50 && backstagePass.sellIn > 0) {
+			quality = quality + 1;
+			if (backstagePass.sellIn < 11) {
+				if (quality < 50) {
+					quality = quality + 1;
+				}
+			}
+
+			if (backstagePass.sellIn < 6) {
+				if (quality < 50) {
+					quality = quality + 1;
+				}
+			}
+		}
+		if (backstagePass.sellIn <= 0) {
+			quality = 0;
+		}
+		return quality;
+	}
+
+
+	private static int sulfurasAfterDay(final Item sulfuras) {
+		return sulfuras.quality;
+	}
+
 	public static int itemQualityAfterDay(final Item item) {
+
+		if (item.name.equals(AGED_BRIE)) return agedBrieAfterDay(item);
+		if (item.name.equals(BACKSTAGE_PASSES)) return backstagePassesAfterDay(item);
+		if (item.name.equals(SULFURAS)) return sulfurasAfterDay(item);
 
 		int quality = item.quality;
 

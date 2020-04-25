@@ -27,8 +27,6 @@ public class GildedRose {
 		}
 	}
 
-
-
 	public void setItems(final Item[] items) {
 		this.items = items;
 	}
