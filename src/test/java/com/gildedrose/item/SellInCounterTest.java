@@ -25,4 +25,10 @@ class SellInCounterTest {
 		Item sulfuras = new Item(GildedRose.SULFURAS, 1, 0);
 		assertEquals(1, SellInCounter.itemSellInValueAfterDay(sulfuras));
 	}
+
+	@Test
+	public void conjured_sell_in_decreases() {
+		Item conjured = new Item(GildedRose.CONJURED, 1, 0);
+		assertEquals(0, SellInCounter.itemSellInValueAfterDay(conjured));
+	}
 }

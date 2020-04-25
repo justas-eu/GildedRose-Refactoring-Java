@@ -4,6 +4,7 @@ import com.gildedrose.Item;
 
 import static com.gildedrose.GildedRose.AGED_BRIE;
 import static com.gildedrose.GildedRose.BACKSTAGE_PASSES;
+import static com.gildedrose.GildedRose.CONJURED;
 import static com.gildedrose.GildedRose.SULFURAS;
 
 public class QualityCounter {
@@ -56,12 +57,15 @@ public class QualityCounter {
 		if (item.name.equals(BACKSTAGE_PASSES)) return backstagePassesAfterDay(item);
 		if (item.name.equals(SULFURAS)) return sulfurasAfterDay(item);
 
+		int factor = 1;
+		if (item.name.equals(CONJURED)) factor = 2;
+
 		int quality = item.quality;
 
 		if (!item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES)) {
 			if (quality > 0) {
 				if (!item.name.equals(SULFURAS)) {
-					quality = quality - 1;
+					quality = quality - 1 * factor;
 				}
 			}
 		} else {
@@ -89,7 +93,7 @@ public class QualityCounter {
 				if (!item.name.equals(BACKSTAGE_PASSES)) {
 					if (quality > 0) {
 						if (!item.name.equals(SULFURAS)) {
-							quality = quality - 1;
+							quality = quality - 1 * factor;
 						}
 					}
 				} else {
