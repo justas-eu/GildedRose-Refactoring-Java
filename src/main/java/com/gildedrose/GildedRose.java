@@ -1,6 +1,9 @@
 package com.gildedrose;
 
-class GildedRose {
+import com.gildedrose.item.QualityCounter;
+import com.gildedrose.item.SellInCounter;
+
+public class GildedRose {
 
 	public static final String AGED_BRIE = "Aged Brie";
 	public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
@@ -19,22 +22,12 @@ class GildedRose {
 			int newQuality = QualityCounter.itemQualityAfterDay(items[i]);
 			items[i].quality = newQuality;
 
-			int newSellIn = itemSellInValueAfterDay(items[i]);
+			int newSellIn = SellInCounter.itemSellInValueAfterDay(items[i]);
 			items[i].sellIn = newSellIn;
 		}
 	}
 
 
-
-	int itemSellInValueAfterDay(final Item item) {
-
-	    int sellIn = item.sellIn;
-
-		if (!item.name.equals(SULFURAS)) {
-            sellIn = sellIn - 1;
-		}
-		return sellIn;
-	}
 
 	public void setItems(final Item[] items) {
 		this.items = items;

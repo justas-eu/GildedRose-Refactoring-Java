@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.item;
+
+import com.gildedrose.Item;
 
 import static com.gildedrose.GildedRose.AGED_BRIE;
 import static com.gildedrose.GildedRose.BACKSTAGE_PASSES;
