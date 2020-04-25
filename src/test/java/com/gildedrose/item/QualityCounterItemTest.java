@@ -21,7 +21,7 @@ class QualityCounterItemTest {
 
 	@Test
 	void quality_should_not_be_negative() {
-		Item item = new Item("Any item", -1, 0);
+		Item item = new Item("Any item", -1, 1);
 		assertEquals(0, QualityCounter.itemQualityAfterDay(item));
 	}
 }

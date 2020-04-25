@@ -22,7 +22,7 @@ class QualityCounterAgedBrieTest {
 
 	@Test
 	void quality_should_not_gt_50() {
-		Item agedBrieItem = new Item(GildedRose.AGED_BRIE, 0, 50);
+		Item agedBrieItem = new Item(GildedRose.AGED_BRIE, 0, 49);
 		assertEquals(50, QualityCounter.itemQualityAfterDay(agedBrieItem));
 	}
 }
