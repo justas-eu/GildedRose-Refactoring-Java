@@ -51,58 +51,32 @@ public class QualityCounter {
 		return sulfuras.quality;
 	}
 
+	private static int conjuredAfterDay(final Item conjured) {
+
+		int quality = conjured.quality;
+
+		if (quality < 50) {
+			quality = quality - 2;
+			if (conjured.sellIn <= 0) {
+				quality = quality - 2;
+			}
+		}
+		if (quality < 0) quality = 0;
+		return quality;
+	}
+
 	public static int itemQualityAfterDay(final Item item) {
 
 		if (item.name.equals(AGED_BRIE)) return agedBrieAfterDay(item);
 		if (item.name.equals(BACKSTAGE_PASSES)) return backstagePassesAfterDay(item);
 		if (item.name.equals(SULFURAS)) return sulfurasAfterDay(item);
-
-		int factor = 1;
-		if (item.name.equals(CONJURED)) factor = 2;
+		if (item.name.equals(CONJURED)) return conjuredAfterDay(item);
 
 		int quality = item.quality;
-
-		if (!item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES)) {
-			if (quality > 0) {
-				if (!item.name.equals(SULFURAS)) {
-					quality = quality - 1 * factor;
-				}
-			}
-		} else {
-			if (quality < 50) {
-				quality = quality + 1;
-
-				if (item.name.equals(BACKSTAGE_PASSES)) {
-					if (item.sellIn < 11) {
-						if (quality < 50) {
-							quality = quality + 1;
-						}
-					}
-
-					if (item.sellIn < 6) {
-						if (quality < 50) {
-							quality = quality + 1;
-						}
-					}
-				}
-			}
-		}
-
-		if (item.sellIn <= 0) {
-			if (!item.name.equals(AGED_BRIE)) {
-				if (!item.name.equals(BACKSTAGE_PASSES)) {
-					if (quality > 0) {
-						if (!item.name.equals(SULFURAS)) {
-							quality = quality - 1 * factor;
-						}
-					}
-				} else {
-					quality = quality - quality;
-				}
-			} else {
-				if (quality < 50) {
-					quality = quality + 1;
-				}
+		if (quality > 0) {
+			quality = quality - 1;
+			if (item.sellIn <= 0) {
+				quality = quality - 1;
 			}
 		}
 		return quality;

@@ -19,4 +19,10 @@ class QualityCounterConjuredTest {
 		Item conjuredItem = new Item(GildedRose.CONJURED, 0, 8);
 		assertEquals(4, QualityCounter.itemQualityAfterDay(conjuredItem));
 	}
+
+	@Test
+	void quality_should_not_be_negative() {
+		Item conjuredItem = new Item(GildedRose.CONJURED, -1, 0);
+		assertEquals(0, QualityCounter.itemQualityAfterDay(conjuredItem));
+	}
 }

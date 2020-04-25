@@ -19,7 +19,7 @@ public class GoldenMasterTest {
 	}
 
 	private String goldenMasterContent() throws IOException {
-		String path = this.getClass().getClassLoader().getResource("GoldenMasterOutput99Days.txt").getPath();
+		String path = this.getClass().getClassLoader().getResource("GoldenMasterOutput99DaysExcludeConjured.txt").getPath();
 		String fileContent = new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
 		return fileContent;
 	}
@@ -41,7 +41,8 @@ public class GoldenMasterTest {
 				new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
 				new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
 				// this conjured item does not work properly yet
-				new Item("Conjured Mana Cake", 3, 6) };
+				//new Item("Conjured Mana Cake", 3, 6)
+		};
 
 		GildedRose app = new GildedRose(items);
 
