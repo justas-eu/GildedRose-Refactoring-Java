@@ -31,4 +31,10 @@ class SellInCounterTest {
 		Item conjured = new Item(GildedRose.CONJURED, 1, 0);
 		assertEquals(0, SellInCounter.itemSellInValueAfterDay(conjured));
 	}
+
+	@Test
+	public void item_sell_in_decreases() {
+		Item item = new Item("Any item", 1, 0);
+		assertEquals(0, SellInCounter.itemSellInValueAfterDay(item));
+	}
 }
